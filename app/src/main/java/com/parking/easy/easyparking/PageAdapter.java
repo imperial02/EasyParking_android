@@ -3,18 +3,18 @@ package com.parking.easy.easyparking;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.widget.TextView;
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
-
+public class PageAdapter extends FragmentStatePagerAdapter {
     private static final int MAP = 0;
     private static final int PARKING_LIST = 1;
-    private final int numOfTabs;
+    private final int mNumOfTabs;
     private final MapFragment mapFragment;
     private final ParkingListFragment parkingListFragment;
 
-    PagerAdapter(final FragmentManager fragmentManager, final int numOfTabs) {
+    PageAdapter(final FragmentManager fragmentManager, final int numOfTabs) {
         super(fragmentManager);
-        this.numOfTabs = numOfTabs;
+        this.mNumOfTabs = numOfTabs;
         mapFragment = new MapFragment();
         parkingListFragment = new ParkingListFragment();
     }
@@ -32,6 +32,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return numOfTabs;
+        return mNumOfTabs;
     }
 }

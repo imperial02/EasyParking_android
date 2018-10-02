@@ -1,14 +1,22 @@
 package com.parking.easy.easyparking;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class TabLayoutFragment extends Fragment {
+public class TabFragment extends Fragment {
 
     @Override
     public View onCreateView(final LayoutInflater inflater,
@@ -23,12 +31,14 @@ public class TabLayoutFragment extends Fragment {
     }
 
     private void setUpTabs(final TabLayout tabLayout) {
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_placeholder));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_list));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_placeholder)
+                .setText(R.string.title_map));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_list)
+                .setText(R.string.title_parking_list));
     }
 
     private void setUpViewPager(final ViewPager viewPager, final TabLayout tabLayout) {
-        final PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),
+        final PageAdapter pagerAdapter = new PageAdapter(getChildFragmentManager(),
                 tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -48,3 +58,4 @@ public class TabLayoutFragment extends Fragment {
         });
     }
 }
+
